@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "enabled": false,
+  "preset": "pure-aero",
+  "wallpaper": "aero-sky-light",
+  "animations": true,
+  "menuBar": true,
+  "clock24h": true,
+  "permissions": {"music": false, "calendar": false},
+  "weather": {"city": "", "latitude": null, "longitude": null, "units": "celsius"},
+  "dock": {"tilesize": 48, "magnification": true, "autohide": false},
+  "widgets": {
+    "clock": {"enabled": true, "x": 36, "y": 48, "width": 300},
+    "weather": {"enabled": false, "x": 36, "y": 210, "width": 300},
+    "system": {"enabled": false, "x": 36, "y": 490, "width": 300},
+    "music": {"enabled": false, "x": 360, "y": 48, "width": 320},
+    "calendar": {"enabled": false, "x": 360, "y": 240, "width": 320},
+    "productivity": {"enabled": false, "x": 710, "y": 48, "width": 320}
+  }
+}

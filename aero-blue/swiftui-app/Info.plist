@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+    <key>CFBundleIdentifier</key><string>studio.aeroblue.controlcenter</string>
+    <key>CFBundleName</key><string>Aero Blue Control Center</string>
+    <key>CFBundleDisplayName</key><string>Aero Blue Control Center</string>
+    <key>CFBundleExecutable</key><string>AeroBlue</string>
+    <key>CFBundleIconFile</key><string>AeroBlue</string>
+    <key>CFBundlePackageType</key><string>APPL</string>
+    <key>CFBundleShortVersionString</key><string>1.0.0</string>
+    <key>CFBundleVersion</key><string>1</string>
+    <key>LSMinimumSystemVersion</key><string>13.0</string>
+    <key>NSHighResolutionCapable</key><true/>
+    <key>NSHumanReadableCopyright</key><string>AERO BLUE — original artwork and software.</string>
+    <key>NSAppleEventsUsageDescription</key><string>Aero Blue displays your current Music track and sends playback commands when you connect Music.</string>
+    <key>NSCalendarsUsageDescription</key><string>Aero Blue reads upcoming events only when you connect Calendar.</string>
+    <key>NSCalendarsFullAccessUsageDescription</key><string>Aero Blue displays upcoming events in your calendar widget. It never edits your calendars.</string>
+</dict></plist>

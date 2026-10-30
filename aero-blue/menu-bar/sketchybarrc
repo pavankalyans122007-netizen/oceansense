@@ -1,0 +1,41 @@
+#!/bin/bash
+set -euo pipefail
+plugin_dir="$(cd "$(dirname "$0")" && pwd)"
+printf -v event_script '%q' "$plugin_dir/status.sh"
+
+# Keep the native macOS menu bar accessible. This optional strip is independent.
+sketchybar --bar position=bottom height=30 margin=16 y_offset=8 \
+  color=0x00000000 border_width=0 shadow=off topmost=off sticky=on \
+  padding_left=8 padding_right=8 blur_radius=20
+
+sketchybar --default \
+  icon.font='SF Pro:Semibold:13.0' label.font='SF Pro:Medium:12.0' \
+  icon.color=0xff164669 label.color=0xff164669 \
+  background.color=0xe8cdeeff background.border_color=0xeef4fbff \
+  background.border_width=1 background.corner_radius=11 background.height=27 \
+  background.drawing=on padding_left=3 padding_right=3 \
+  icon.padding_left=10 icon.padding_right=4 label.padding_left=4 label.padding_right=10
+
+sketchybar --add item aero.symbol left \
+  --set aero.symbol icon='◉' label='Aero Blue' \
+  --add item aero.front_app left \
+  --set aero.front_app icon.drawing=off label='Application' script="$event_script" \
+  --subscribe aero.front_app front_app_switched
+
+# These are numbered Mission Control spaces. Edit this list to match your Mac.
+for space in 1 2 3 4; do
+  sketchybar --add space "aero.space.$space" left \
+    --set "aero.space.$space" associated_space="$space" icon.drawing=off \
+      label="$space" background.drawing=off script="$event_script"
+done
+
+sketchybar --add item aero.clock right \
+  --set aero.clock icon='◷' update_freq=30 script="$event_script" \
+  --add item aero.battery right \
+  --set aero.battery icon='▰' update_freq=60 script="$event_script" \
+  --subscribe aero.battery power_source_change system_woke \
+  --add item aero.wifi right \
+  --set aero.wifi icon='◌' update_freq=60 script="$event_script" \
+  --subscribe aero.wifi wifi_change system_woke
+
+sketchybar --update

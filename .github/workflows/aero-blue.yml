@@ -1,0 +1,41 @@
+name: Aero Blue validation
+on:
+  push:
+    paths: ['aero-blue/**', '.github/workflows/aero-blue.yml']
+  pull_request:
+    paths: ['aero-blue/**', '.github/workflows/aero-blue.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  portable:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Python behavior and asset validation
+        run: python3 -m unittest discover -s aero-blue/tests -v
+      - name: Widget logic
+        run: node aero-blue/widgets/aero-blue/helpers.test.mjs
+      - name: Shell syntax
+        run: |
+          for script in aero-blue/scripts/*.sh aero-blue/menu-bar/*.sh aero-blue/menu-bar/sketchybarrc; do
+            bash -n "$script"
+          done
+  macos-build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile native application and helper
+        working-directory: aero-blue/swiftui-app
+        run: swift build -c release
+      - name: Read-only native accessibility check
+        working-directory: aero-blue/swiftui-app
+        run: .build/release/AeroBridge appearance

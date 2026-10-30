@@ -1,0 +1,6 @@
+{
+  "pure-aero": {"wallpaper":"aero-sky-light", "animations":true, "dock":{"tilesize":48,"magnification":true,"autohide":false}},
+  "aqua-minimal": {"wallpaper":"aero-sky-light", "animations":false, "dock":{"tilesize":40,"magnification":false,"autohide":true}},
+  "crystal-ocean": {"wallpaper":"crystal-ocean-light", "animations":true, "dock":{"tilesize":48,"magnification":true,"autohide":false}},
+  "sky-blue-elegance": {"wallpaper":"aero-meadow-light", "animations":true, "dock":{"tilesize":44,"magnification":false,"autohide":false}}
+}
